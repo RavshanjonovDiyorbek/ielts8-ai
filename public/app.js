@@ -531,10 +531,7 @@
       headers['Content-Type'] = 'application/json';
     }
     const isCapacitorNative = Boolean(window.Capacitor?.isNativePlatform?.());
-    if (isCapacitorNative && url.startsWith('/api/')) {
-      return await standaloneApiFallback(url, options);
-    }
-    const isEmbeddedOffline = window.location.protocol === 'data:' || window.location.protocol === 'file:';
+    const isEmbeddedOffline = isCapacitorNative || !/^https?:$/.test(window.location.protocol);
     const targetUrl = isEmbeddedOffline && url.startsWith('/api/')
       ? `http://${serverConfig.lanIp || '192.168.0.103'}:${serverConfig.port || '3000'}${url}`
       : url;

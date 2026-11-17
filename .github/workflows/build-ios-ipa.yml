@@ -5,9 +5,12 @@ on:
   push:
     branches: [main, master]
 
+permissions:
+  contents: write
+
 jobs:
   build-ipa:
-    runs-on: macos-14
+    runs-on: macos-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -20,33 +23,45 @@ jobs:
       - name: Initialize Capacitor iOS Project & Local Notifications
         run: |
           rm -rf ios
-          npm init -y || true
-          npm install @capacitor/core @capacitor/cli @capacitor/ios @capacitor/local-notifications
+          npm install --no-save @capacitor/core@6 @capacitor/cli@6 @capacitor/ios@6 @capacitor/local-notifications@6
           npx cap add ios
           npx cap sync ios
 
-      - name: Configure iOS Info.plist Permissions (Mic & Camera)
+      - name: Configure iOS Info.plist Permissions (Mic, Camera & ATS)
         run: |
           PLIST="ios/App/App/Info.plist"
-          /usr/libexec/PlistBuddy -c "Add :NSMicrophoneUsageDescription string 'IELTS Speaking va Talaffuz Rentgeni uchun mikrofon kerak'" "$PLIST" || true
-          /usr/libexec/PlistBuddy -c "Add :NSCameraUsageDescription string 'Qo‘lyozma insho va rasmlarni tekshirish uchun kamera kerak'" "$PLIST" || true
-          /usr/libexec/PlistBuddy -c "Add :NSPhotoLibraryUsageDescription string 'Galereyadan rasm yuklash uchun ruxsat kerak'" "$PLIST" || true
+          /usr/libexec/PlistBuddy -c "Add :NSMicrophoneUsageDescription string 'IELTS Speaking va Talaffuz Rentgeni uchun mikrofon kerak'" "$PLIST" || /usr/libexec/PlistBuddy -c "Set :NSMicrophoneUsageDescription 'IELTS Speaking va Talaffuz Rentgeni uchun mikrofon kerak'" "$PLIST"
+          /usr/libexec/PlistBuddy -c "Add :NSCameraUsageDescription string 'Qolyozma insho va rasmlarni tekshirish uchun kamera kerak'" "$PLIST" || /usr/libexec/PlistBuddy -c "Set :NSCameraUsageDescription 'Qolyozma insho va rasmlarni tekshirish uchun kamera kerak'" "$PLIST"
+          /usr/libexec/PlistBuddy -c "Add :NSPhotoLibraryUsageDescription string 'Galereyadan rasm yuklash uchun ruxsat kerak'" "$PLIST" || /usr/libexec/PlistBuddy -c "Set :NSPhotoLibraryUsageDescription 'Galereyadan rasm yuklash uchun ruxsat kerak'" "$PLIST"
+          /usr/libexec/PlistBuddy -c "Add :NSAppTransportSecurity dict" "$PLIST" || true
+          /usr/libexec/PlistBuddy -c "Add :NSAppTransportSecurity:NSAllowsArbitraryLoads bool true" "$PLIST" || /usr/libexec/PlistBuddy -c "Set :NSAppTransportSecurity:NSAllowsArbitraryLoads true" "$PLIST"
 
-      - name: Build Unsigned iOS Archive & Package .ipa (For AltStore / Sideloadly)
+      - name: Build Unsigned iOS App & Package .ipa (For Sideloadly / AltStore)
         run: |
           cd ios/App
           if [ -d "App.xcworkspace" ]; then
-            xcodebuild -workspace App.xcworkspace -scheme App -configuration Release -sdk iphoneos CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGNING_IDENTITY="" -archivePath build/App.xcarchive archive
+            xcodebuild -workspace App.xcworkspace -scheme App -configuration Release -sdk iphoneos -derivedDataPath build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO build
           else
-            xcodebuild -project App.xcodeproj -scheme App -configuration Release -sdk iphoneos CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGNING_IDENTITY="" -archivePath build/App.xcarchive archive
+            xcodebuild -project App.xcodeproj -scheme App -configuration Release -sdk iphoneos -derivedDataPath build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO build
           fi
+          ls -lh build/Build/Products/Release-iphoneos/App.app/App
           mkdir -p build/Payload
-          cp -R build/App.xcarchive/Products/Applications/App.app build/Payload/
+          cp -R build/Build/Products/Release-iphoneos/App.app build/Payload/
           cd build
-          zip -r IELTS8-AI-iPhone13Pro.ipa Payload
+          zip -r -y IELTS8-AI-iPhone13Pro.ipa Payload
 
       - name: Upload .ipa Artifact
         uses: actions/upload-artifact@v4
         with:
           name: IELTS8-AI-iPhone13Pro-ipa
           path: ios/App/build/IELTS8-AI-iPhone13Pro.ipa
+
+      - name: Publish Compiled .ipa to releases/ branch folder
+        run: |
+          mkdir -p releases
+          cp ios/App/build/IELTS8-AI-iPhone13Pro.ipa releases/IELTS8-AI-iPhone13Pro.ipa
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f releases/IELTS8-AI-iPhone13Pro.ipa
+          git commit -m "Release compiled iOS .ipa binary [skip ci]"
+          git push origin HEAD:main
