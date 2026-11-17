@@ -1137,6 +1137,8 @@
     const txt = $('lengthGateText');
     if (!inp || !bar || !txt) return;
     const words = inp.value.trim().split(/\s+/).filter(Boolean).length;
+    bar.classList.toggle('hidden', words === 0);
+    if (words === 0) return;
     const minW = getMinRequiredWords();
     const ok = words >= minW;
     txt.textContent = ok

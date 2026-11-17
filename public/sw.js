@@ -1,9 +1,9 @@
-const CACHE_NAME = 'ielts8-ai-standalone-v5';
+const CACHE_NAME = 'ielts8-ai-standalone-v6';
 const CORE_ASSETS = [
   '/',
   '/index.html',
-  '/styles.css?v=5',
-  '/app.js?v=5',
+  '/styles.css?v=6',
+  '/app.js?v=6',
   '/manifest.json',
   '/icon.svg',
   '/apple-touch-icon.png'
