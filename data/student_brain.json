@@ -1,0 +1,86 @@
+{
+  "level": "Elementary (A2 - Boshlang'ich)",
+  "estimatedBand": 4,
+  "targetBand": 8,
+  "activeFocusUz": "O'quvchi bilan tanishish, real gapirish/yozish darajasini va ilk kamchiliklarni aniqlash",
+  "weaknesses": [],
+  "strengths": [],
+  "interests": [],
+  "dynamicRoadmap": [
+    {
+      "id": "step_init_1",
+      "titleUz": "1-Bosqich: Jonli Tanishuv va Real Darajani Aniqlash",
+      "reasonUz": "Tayyor shablon o'rniga, AI Ustoz avval sizning hozirgi gapirish va fikrlash usulingizni eshitib, shaxsiy yo'l xaritasini tuzib chiqadi.",
+      "targetGap": "Diagnostic & Personal Baseline",
+      "status": "active",
+      "theoryUz": "Siz Elementary darajadan boshlayapsiz. Shuning uchun birinchi qadam — ingliz tilida o'zingiz haqingizda 2-3 oddiy gap yozing yoki ayting. AI ongi sizning xatolaringiz va qiziqishlaringizdan kelib chiqib keyingi darslar va internetdagi audio/videolarni yaratadi.",
+      "practicePrompt": "Hello teacher! My name is ... I want to learn English because ...",
+      "createdByAiAt": "2026-11-17T11:08:14.382Z"
+    }
+  ],
+  "personalVocab": [],
+  "mediaHistory": [],
+  "aiMemoryNotes": [
+    "O'quvchi Elementary darajadan boshlab 3 oy ichida IELTS Band 8.0 olishni maqsad qilgan."
+  ],
+  "bootcamp": {
+    "currentChainDay": 1,
+    "completedChainDays": [],
+    "phase": "bootcamp_7",
+    "brokenLinksAlert": null,
+    "notificationUz": "🔔 1-kun: Ingliz tili gap qurish skeletining 1-zanjirini (Hozirgi zamon va Oltin Qolip) jonli amaliyotda boshlaymiz!"
+  },
+  "dailyChecklist": {
+    "step1_patterns": false,
+    "step2_bricks": false,
+    "step3_micro_media": false,
+    "step4_live_chat": false,
+    "completedCount": 0
+  },
+  "skillBands": {
+    "speaking": 4,
+    "listening": 4,
+    "reading": 4,
+    "writing": 4
+  },
+  "strictMode": "auto",
+  "vocabSprint": {
+    "totalMasteredCount": 0,
+    "currentBatchDay": 1,
+    "highScoreCombo": 0
+  },
+  "weeklyCheckpoints": [],
+  "dailyBriefing": {
+    "generatedForDay": 1,
+    "pushTitleUz": "🔔 1-Kun Hisoboti: Darajangiz Elementary (Band 4.0)",
+    "knowledgeDiagnosisUz": "Hozir siz Elementary (A2 - Boshlang'ich) darajasidasiz (taxminiy IELTS Band 4.0). 90 kunda Band 8.0 ga chiqish uchun avval 7 kunlik grammatika zanjirini mustahkamlab, har kuni 4 ta vazifani bajaring.",
+    "paceStatusUz": "90 kunlik reja: 1-kun / 90 • Maqsad: Band 8.0 (89 kun qoldi)",
+    "missions": [
+      {
+        "id": "step1_patterns",
+        "actionType": "patterns",
+        "titleUz": "1-kun Oltin Fe'llar va Qoliplari",
+        "detailUz": "Hozirgi darajangizga mos 6 ta asosiy qolipni o'rganing va 3 ta tezkor mashqni yeching."
+      },
+      {
+        "id": "step2_bricks",
+        "actionType": "bricks",
+        "titleUz": "Gap Kubiklari bilan 3 ta Gap Yig‘ish",
+        "detailUz": "O'zbekcha fikringizni darajangizga mos inglizcha kubiklar bilan yig'ib Band 8 ko'prigini ko'ring."
+      },
+      {
+        "id": "step3_micro_media",
+        "actionType": "media",
+        "titleUz": "1 ta Audio/Video Jumlalarini Chaynab Eshitish",
+        "detailUz": "Internetdan mos audio/videoni ochib, jumlama-jumla 0.8x tezlikda tinglang va AI bilan muhokama qiling."
+      },
+      {
+        "id": "step4_live_chat",
+        "actionType": "chat",
+        "titleUz": "1-kun Zanjirli Jonli Suhbat",
+        "detailUz": "AI Ustoz bilan yozma yoki ovozli (🎧/🎙️) muloqotda bugungi qoidalarni amalda ishlating."
+      }
+    ]
+  },
+  "updatedAt": "2026-11-17T11:08:14.382Z"
+}

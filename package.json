@@ -1,0 +1,12 @@
+{
+  "name": "ielts8-ai-teacher-ios",
+  "version": "1.0.0",
+  "description": "90-Day Elementary to IELTS Band 8.0 AI English Teacher PWA for iPhone 13 Pro powered by Gemini 4 Hydrogen",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

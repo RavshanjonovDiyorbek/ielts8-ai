@@ -1,0 +1,52 @@
+name: Build iOS .ipa for iPhone 13 Pro
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main, master]
+
+jobs:
+  build-ipa:
+    runs-on: macos-14
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Initialize Capacitor iOS Project & Local Notifications
+        run: |
+          rm -rf ios
+          npm init -y || true
+          npm install @capacitor/core @capacitor/cli @capacitor/ios @capacitor/local-notifications
+          npx cap add ios
+          npx cap sync ios
+
+      - name: Configure iOS Info.plist Permissions (Mic & Camera)
+        run: |
+          PLIST="ios/App/App/Info.plist"
+          /usr/libexec/PlistBuddy -c "Add :NSMicrophoneUsageDescription string 'IELTS Speaking va Talaffuz Rentgeni uchun mikrofon kerak'" "$PLIST" || true
+          /usr/libexec/PlistBuddy -c "Add :NSCameraUsageDescription string 'Qo‘lyozma insho va rasmlarni tekshirish uchun kamera kerak'" "$PLIST" || true
+          /usr/libexec/PlistBuddy -c "Add :NSPhotoLibraryUsageDescription string 'Galereyadan rasm yuklash uchun ruxsat kerak'" "$PLIST" || true
+
+      - name: Build Unsigned iOS Archive & Package .ipa (For AltStore / Sideloadly)
+        run: |
+          cd ios/App
+          if [ -d "App.xcworkspace" ]; then
+            xcodebuild -workspace App.xcworkspace -scheme App -configuration Release -sdk iphoneos CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGNING_IDENTITY="" -archivePath build/App.xcarchive archive
+          else
+            xcodebuild -project App.xcodeproj -scheme App -configuration Release -sdk iphoneos CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGNING_IDENTITY="" -archivePath build/App.xcarchive archive
+          fi
+          mkdir -p build/Payload
+          cp -R build/App.xcarchive/Products/Applications/App.app build/Payload/
+          cd build
+          zip -r IELTS8-AI-iPhone13Pro.ipa Payload
+
+      - name: Upload .ipa Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: IELTS8-AI-iPhone13Pro-ipa
+          path: ios/App/build/IELTS8-AI-iPhone13Pro.ipa

@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
+  />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="IELTS 8 AI" />
+  <meta name="theme-color" content="#000000" />
+  <title>Gemini 4 Hydrogen — Jonli AI Ingliz Tili Ustozi (iPhone 13 Pro)</title>
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+  <link rel="stylesheet" href="/styles.css?v=5" />
+</head>
+<body>
+  <!-- Desktop Utility Bar -->
+  <header id="desktopToolbar" class="desktop-toolbar">
+    <div class="toolbar-brand">
+      <span class="brand-dot"></span>
+      <strong>IELTS 8 AI Ustoz</strong>
+      <span class="toolbar-sub">Gemini 4 Hydrogen • Real Ong</span>
+    </div>
+    <div class="toolbar-actions">
+      <span id="modelBadge" class="model-pill">⚡ Gemini 4 Hydrogen</span>
+      <button id="btnOpenQr" class="toolbar-btn primary-pill" type="button">
+        📲 .ipa Yuklash & iPhone 13 Pro O'rnatish
+      </button>
+      <button id="btnToggleFrame" class="toolbar-btn" type="button">
+        🖥️ To'liq ekran
+      </button>
+      <button id="btnSettingsDesktop" class="toolbar-btn" type="button">
+        ⚙️ Sozlamalar
+      </button>
+    </div>
+  </header>
+
+  <div class="stage-wrap">
+    <div id="deviceShell" class="iphone-frame">
+      <span class="hw-btn hw-mute"></span>
+      <span class="hw-btn hw-vol-up"></span>
+      <span class="hw-btn hw-vol-down"></span>
+      <span class="hw-btn hw-power"></span>
+
+      <div class="iphone-screen">
+        <!-- iPhone 13 Pro Notch & Status Bar -->
+        <div class="ios-status-bar">
+          <span class="ios-time" id="iosClock">9:41</span>
+          <div class="iphone-notch" aria-hidden="true">
+            <span class="notch-speaker"></span>
+            <span class="notch-camera"></span>
+          </div>
+          <div class="ios-indicators">
+            <span class="ios-signal">5G</span>
+            <span class="ios-battery"><span class="battery-fill"></span></span>
+          </div>
+        </div>
+
+        <!-- iOS Proactive Daily Push Notification Banner -->
+        <div id="iosPushBanner" class="ios-push-banner hidden">
+          <div class="ios-push-top">
+            <div class="ios-push-app">
+              <span class="push-app-badge">8.0</span>
+              <strong>AI USTOZ HISOBOTI</strong>
+            </div>
+            <button id="btnDismissPush" class="push-close" type="button">✕</button>
+          </div>
+          <div class="ios-push-title" id="pushNotifTitle">🔔 Bugungi darajangiz va rejangiz tayyor!</div>
+          <div class="ios-push-body" id="pushNotifBody">Hozirgi bilimingiz va bugungi 4 ta shaxsiy vazifani ochib ko‘ring.</div>
+          <button id="btnPushOpenBriefing" class="mini-link-btn green" style="align-self:flex-start; margin-top:4px;" type="button">
+            📋 Bugungi Rejani Ochish
+          </button>
+        </div>
+
+        <!-- App Header -->
+        <div class="app-header">
+          <div class="app-header-left">
+            <div class="app-logo-mini">8.0</div>
+            <div>
+              <h1 class="app-title" id="headerTitle">Jonli AI Ustoz</h1>
+              <p class="app-subtitle" id="headerSubtitle">Elementary → Band 8.0 • Real Ong</p>
+            </div>
+          </div>
+          <div class="app-header-right">
+            <button id="btnHeaderBriefing" class="icon-btn" type="button" title="Kunlik AI Hisobot & Reja" aria-label="Hisobot">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            </button>
+            <button id="btnHeaderQr" class="icon-btn" type="button" title="iPhone 13 Pro-da ochish" aria-label="iPhone Yuklash">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+            </button>
+            <button id="btnHeaderSettings" class="icon-btn" type="button" title="Sozlamalar" aria-label="Sozlamalar">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Scrollable App Viewport -->
+        <main class="app-main" id="appMain">
+          <!-- TAB 1: JONLI USTOZ (LIVING AI MIND - DEFAULT TAB) -->
+          <section id="tab-tutor" class="tab-panel active">
+            <!-- Compact Glass Bento Header (~82px) -->
+            <div class="bento-top-bar">
+              <div class="bento-status-row">
+                <div class="bento-band-badge">
+                  <small>BAND</small>
+                  <strong id="tutorBandPill">4.0</strong>
+                </div>
+                <div class="bento-focus-col">
+                  <div class="bento-tags-row">
+                    <span class="bento-pill indigo">GEMINI 4 HYDROGEN</span>
+                    <span class="bento-pill amber" id="bootcampPhaseBadge">1/7 Kun</span>
+                  </div>
+                  <div class="brain-focus-text" id="brainFocusSummary">
+                    Tanishuv va real darajangizni aniqlash...
+                  </div>
+                </div>
+              </div>
+              <div class="bento-actions-row">
+                <button id="btnOpenBootcampDay" class="bento-action-btn primary" type="button">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                  Zanjir Darsi
+                </button>
+                <button id="btnOpenBriefing" class="bento-action-btn amber" type="button">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/></svg>
+                  Hisobot
+                </button>
+                <button id="btnToggleTutorDrawer" class="bento-action-btn ghost" type="button" aria-expanded="false">
+                  Reja &amp; Rejim ▾
+                </button>
+              </div>
+            </div>
+
+            <!-- Collapsible Detailed Dashboard Drawer (Collapsed by default so Chat fills the screen) -->
+            <div id="tutorDashboardDrawer" class="tutor-drawer hidden">
+              <div class="brain-status-card" id="brainStatusCard">
+                <div class="brain-meta-row">
+                  <span id="brainWeaknessCount">🔍 0 ta kamchilik</span>
+                  <span id="brainRoadmapCount">🗺️ 1 ta dars</span>
+                  <button id="btnGenNextStep" class="mini-link-btn green" type="button">
+                    ✨ Shaxsiy Dars Tuzish
+                  </button>
+                </div>
+              </div>
+
+              <div class="bootcamp-card" id="bootcampHeroCard">
+                <div class="row-between">
+                  <strong class="bootcamp-title">⚡ 7-Kunlik Grammatika Zanjiri</strong>
+                  <button id="btnStartSnowballChat" class="mini-link-btn green" type="button">
+                    🗣️ Eski+Yangi Suhbat
+                  </button>
+                </div>
+                <div id="chainNotificationBanner" class="chain-notif">
+                  🔔 1-kun: Gap tuzishning 1-zanjirini jonli amaliyotda boshlaymiz!
+                </div>
+                <div id="chainLinksRow" class="chain-links-row"></div>
+                <div id="dailyChecklistRow" class="checklist-row">
+                  <button class="chk-pill" data-chk="step1_patterns" id="chkStep1" type="button">1. Qoliplar</button>
+                  <button class="chk-pill" data-chk="step2_bricks" id="chkStep2" type="button">2. Kubiklar</button>
+                  <button class="chk-pill" data-chk="step3_micro_media" id="chkStep3" type="button">3. Media</button>
+                  <button class="chk-pill" data-chk="step4_live_chat" id="chkStep4" type="button">4. Suhbat</button>
+                </div>
+                <div id="strictModeBar" class="pill-row">
+                  <button class="filter-pill active" data-strict="auto" type="button">Auto</button>
+                  <button class="filter-pill" data-strict="assisted" type="button">Yordamchi</button>
+                  <button class="filter-pill" data-strict="semi_strict" type="button">Yarim-Qattiq</button>
+                  <button class="filter-pill" data-strict="exam_strict" type="button">100% Exam</button>
+                  <button class="filter-pill" id="btnOpenWeeklyExam" type="button">🏆 Haftalik Imtihon</button>
+                </div>
+                <div class="quick-chips" id="chatQuickChips">
+                  <button class="chip-btn" data-prompt="Mening hozirgi kamchiliklarim va darajamdan kelib chiqib internetdan mos audio yoki video topib ber!" type="button">
+                    🌐 Kamchiligimga media
+                  </button>
+                  <button class="chip-btn" data-prompt="Mening darajam Elementary. Meni tekshirib ko'ring va menga hozir eng kerakli birinchi darsni tuzib bering." type="button">
+                    🎯 Daraja tekshiruvi
+                  </button>
+                  <button class="chip-btn" data-prompt="Oxirgi gapimni Band 8.0 darajasiga ko'tarib, nega shunday ekanini o'zbekcha tushuntir." type="button">
+                    ✨ Band 8 qilib ber
+                  </button>
+                  <button class="chip-btn" data-prompt="Menga hozirgi zaif tomonim bo'yicha jonli mashq bering!" type="button">
+                    🧩 Jonli mashq
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tutor Mode Switcher -->
+            <div class="segmented-control five-tabs" id="tutorModeSwitcher">
+              <button class="seg-btn active" data-mode="mentor" type="button">Ustoz</button>
+              <button class="seg-btn" data-mode="speaking" type="button">Nutq</button>
+              <button class="seg-btn" data-mode="roleplay" type="button">Rolli</button>
+              <button class="seg-btn" data-mode="media_discussion" type="button">Media</button>
+              <button class="seg-btn" data-mode="mock_exam" type="button">Mock</button>
+            </div>
+
+            <div id="roleplayBar" class="pill-row hidden" style="flex-shrink:0;">
+              <button class="filter-pill active" data-scenario="airport" type="button">✈️ London Aeroport</button>
+              <button class="filter-pill" data-scenario="cafe" type="button">☕ Kafe & Do'st</button>
+              <button class="filter-pill" data-scenario="interview" type="button">💼 Ish Intervyu</button>
+              <button class="filter-pill" data-scenario="debate" type="button">⚖️ IELTS Part 3 Debat</button>
+            </div>
+
+            <div id="mediaContextBanner" class="video-banner hidden">
+              <div class="video-banner-info">
+                <span class="badge-mini" id="bannerMediaBadge">MUHOKAMA</span>
+                <strong id="bannerMediaTitle">Material tanlanmagan</strong>
+              </div>
+              <button id="btnBackToMedia" class="mini-link-btn" type="button">Ochish</button>
+            </div>
+
+            <div id="mockTimerBar" class="mock-timer-bar hidden">
+              <span>🎙️ Mock Exam</span>
+              <div class="mock-timer-actions">
+                <span id="mockTimerDisplay">00:00</span>
+                <button id="btnMockTimerToggle" class="mini-link-btn" type="button">▶️ Boshlash</button>
+                <button id="btnFinishMock" class="mini-link-btn green" type="button">🏅 Baholash</button>
+              </div>
+            </div>
+
+            <div id="chatMessages" class="chat-messages"></div>
+
+            <!-- Adaptive Word Bricks Bar (Next Reply Scaffolds + Mixed Uzbek Helper) -->
+            <div id="replyBricksBar" class="bricks-bar">
+              <button class="brick-helper-btn" id="btnOpenBrickModal" type="button">Kubiklar</button>
+              <div id="replyBricksList" class="bricks-scroll"></div>
+            </div>
+
+            <div id="lengthGateBar" class="length-gate-bar">
+              <span id="lengthGateText">Minimal hajm: 0 / 8 so‘z</span>
+              <span id="strictStageIndicator" class="badge-mini">Bosqich 1 (1–14 kun)</span>
+            </div>
+
+            <div class="chat-composer">
+              <button id="btnCameraChat" class="mic-btn" type="button" title="Kamera / Rasm yuklash (Visual Ustoz)" aria-label="Kamera">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+              </button>
+              <input id="chatCameraInput" type="file" accept="image/*" class="hidden" />
+              <input id="iosAudioCaptureInput" type="file" accept="audio/*,video/*" capture="user" class="hidden" />
+              <button id="btnAudioXray" class="mic-btn" type="button" title="Ovoz yozish & Talaffuz Rentgeni (Raw Audio AI)" aria-label="Talaffuz Rentgeni">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 10v4M8 7v10M12 4v16M16 7v10M20 10v4"/></svg>
+              </button>
+              <button id="btnMic" class="mic-btn" type="button" title="Mikrofon (Matnga aylantirish)" aria-label="Mikrofon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+              </button>
+              <textarea
+                id="chatInput"
+                class="chat-input"
+                rows="1"
+                placeholder="Xabar yozing..."
+              ></textarea>
+              <button id="btnAutoVoice" class="voice-toggle active" type="button" title="Ovozli o'qish" aria-label="Ovoz">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+              </button>
+              <button id="btnSendChat" class="send-btn" type="button" title="Yuborish" aria-label="Yuborish">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+              </button>
+            </div>
+          </section>
+
+          <!-- TAB 2: MEDIA & AUDIO (MULTI-SOURCE INTERNET DISCOVERY) -->
+          <section id="tab-media" class="tab-panel">
+            <div class="video-search-box">
+              <button id="btnAiRecommendMedia" class="ios-btn gradient full" type="button">
+                🧠 Kamchiliklarim asosida Internetdan Audio & Video topib ber
+              </button>
+              <div class="search-row">
+                <input
+                  id="mediaSearchInput"
+                  type="search"
+                  class="ios-input"
+                  placeholder="Istalgan mavzuda izlash (podcast, video, maqola)..."
+                />
+                <button id="btnSearchMedia" class="ios-btn primary compact" type="button">Izlash</button>
+              </div>
+            </div>
+
+            <div class="pill-row" id="mediaSourceRow">
+              <button class="filter-pill active" data-src="all" type="button">🌐 Barchasi</button>
+              <button class="filter-pill" data-src="audio" type="button">🎧 Audio & Podkast (MP3)</button>
+              <button class="filter-pill" data-src="dailymotion" type="button">📺 Dailymotion</button>
+              <button class="filter-pill" data-src="youtube" type="button">▶️ YouTube</button>
+              <button class="filter-pill" data-src="article" type="button">📰 Web Maqola</button>
+            </div>
+
+            <div id="aiMediaReasoningBox" class="hint-box hidden"></div>
+
+            <!-- Universal In-App Media Studio -->
+            <div id="activeMediaStudio" class="video-studio hidden">
+              <div class="row-between">
+                <span class="badge-mini" id="studioPlatformBadge">MEDIA</span>
+                <a id="studioExternalLink" href="#" target="_blank" rel="noopener noreferrer" class="ext-link">
+                  Manbada ochish ↗
+                </a>
+              </div>
+              <h3 id="studioMediaTitle" style="margin:0; font-size:15px;">Material nomi</h3>
+              <small id="studioMediaChannel" style="color:var(--text-secondary);">Manba</small>
+
+              <!-- 1. Audio MP3 Podcast Player -->
+              <div id="audioPlayerWrap" class="audio-studio-card hidden">
+                <div class="audio-studio-head">
+                  <img id="audioCoverImg" src="/icon.svg" alt="" class="audio-cover" />
+                  <div>
+                    <strong id="audioTitleSmall" style="font-size:13px;">Podcast Episode</strong>
+                    <p id="audioSubSmall" class="hint-text" style="margin:2px 0 0;">Real Internet MP3 Stream</p>
+                  </div>
+                </div>
+                <audio id="podcastAudioEl" controls class="native-audio"></audio>
+                <div class="audio-controls-row">
+                  <button id="btnAudioBack15" class="mini-link-btn" type="button">-15s</button>
+                  <button id="btnAudioFwd15" class="mini-link-btn" type="button">+15s</button>
+                  <button class="speed-btn" data-ar="0.85" type="button">0.85x</button>
+                  <button class="speed-btn active" data-ar="1" type="button">1.0x</button>
+                  <button class="speed-btn" data-ar="1.2" type="button">1.2x</button>
+                </div>
+              </div>
+
+              <!-- 2. Video Embed (YouTube / Dailymotion) -->
+              <div id="videoEmbedWrap" class="player-wrap hidden">
+                <iframe
+                  id="mediaEmbedFrame"
+                  src=""
+                  title="Media player"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
+              </div>
+
+              <!-- 3. Web Article Reader -->
+              <div id="articleReaderWrap" class="article-reader hidden">
+                <div class="row-between" style="margin-bottom:8px;">
+                  <strong>📖 Internet Maqola Matni</strong>
+                  <button id="btnReadArticleAloud" class="mini-link-btn green" type="button">🔊 Ovozda eshitish</button>
+                </div>
+                <div id="articleBodyText" class="article-body"></div>
+              </div>
+
+              <button id="btnDiscussMedia" class="ios-btn success full" type="button">
+                🗣️ Eshitdim / Ko'rdim — AI Ustoz bilan muhokama qilish!
+              </button>
+
+              <div id="mediaAnalysisBox" class="analysis-card">
+                <div class="analysis-head">
+                  <strong>🧠 Gemini 4 Hydrogen Tahlili</strong>
+                  <button id="btnReanalyzeMedia" class="mini-link-btn" type="button">Yangilash</button>
+                </div>
+                <div id="mediaAnalysisContent" class="analysis-body">
+                  Material tanlanganda AI sizning kamchiligingizga mos tahlil tayyorlaydi.
+                </div>
+              </div>
+            </div>
+
+            <div class="section-head">
+              <h3 id="mediaGridHeading">Internetdan topilgan materiallar</h3>
+              <span class="hint-text" id="mediaCountBadge">0 ta</span>
+            </div>
+            <div id="mediaGrid" class="video-grid"></div>
+          </section>
+
+          <!-- TAB 3: AI XOTIRASI (Mening Kamchiliklarim & AI Shakllantirgan Yo'l) -->
+          <section id="tab-brain" class="tab-panel">
+            <div class="hero-card">
+              <div class="hero-top">
+                <div>
+                  <span class="badge-chip">🧬 AI KOGNITIV XOTIRASI</span>
+                  <h2 class="hero-day" id="memLevelTitle">Elementary → 8.0</h2>
+                  <p class="hero-goal" id="memFocusText">Fokus yuklanmoqda...</p>
+                </div>
+                <div class="band-ring">
+                  <span class="band-ring-label">BAND</span>
+                  <strong class="band-ring-val" id="memBandScore">4.0</strong>
+                </div>
+              </div>
+              <div class="hero-actions">
+                <button id="btnBrainBuildLesson" class="ios-btn primary full" type="button">
+                  ✨ Hozirgi kamchiliklarim asosida Yangi Shaxsiy Dars yaratish
+                </button>
+              </div>
+            </div>
+
+            <div class="section-head">
+              <h3>🔍 AI Aniqlagan Kamchiliklaringiz</h3>
+              <span class="hint-text" id="memWeakLen">0 ta</span>
+            </div>
+            <div id="weaknessesList" class="days-list"></div>
+
+            <div class="section-head">
+              <h3>🗺️ AI Siz Uchun Shakllantirgan Darslar</h3>
+              <span class="hint-text" id="memRoadmapLen">1 ta</span>
+            </div>
+            <div id="dynamicRoadmapList" class="days-list"></div>
+
+            <div class="card-block">
+              <strong>📝 AI Ustoz Xotira Qaydlari</strong>
+              <ul id="aiNotesList" class="ios-steps"></ul>
+            </div>
+          </section>
+
+          <!-- TAB 4: MASHQXONA (R&L 8.5, 30 SO'Z SPRINT, LUG'AT, SHADOWING, VISUAL, WRITING) -->
+          <section id="tab-lab" class="tab-panel">
+            <div class="pill-row" id="labSubSwitcher">
+              <button class="filter-pill active" data-lab="vocab" type="button">🧠 Lug'at</button>
+              <button class="filter-pill" data-lab="rl-sim" type="button">📖 R &amp; L 8.5</button>
+              <button class="filter-pill" data-lab="sprint" type="button">⚡ 30 So‘z Sprint</button>
+              <button class="filter-pill" data-lab="shadowing" type="button">🔁 Shadowing</button>
+              <button class="filter-pill" data-lab="vision" type="button">📸 Visual</button>
+              <button class="filter-pill" data-lab="writing" type="button">✍️ Writing</button>
+            </div>
+
+            <!-- 0A. IELTS Reading & Listening 8.5 Simulator -->
+            <div id="lab-rl-sim" class="lab-pane hidden">
+              <div class="card-block">
+                <div class="row-between">
+                  <span class="badge-mini">📖 IELTS READING &amp; LISTENING 8.5 SIMULYATORI</span>
+                  <span class="hint-text" id="rlTimerText">⏱️ 00:00</span>
+                </div>
+                <div class="pill-row" style="margin-top:8px;">
+                  <button class="filter-pill active" id="btnRlReading" type="button">📖 Reading (T/F/NG + Matching + Gap-Fill)</button>
+                  <button class="filter-pill" id="btnRlListening" type="button">🎧 Listening (Audio + Distractorlar)</button>
+                </div>
+                <div class="search-row" style="margin-top:8px;">
+                  <input id="rlTopicInput" type="text" class="ios-input" placeholder="Mavzu (masalan: Climate, Architecture, AI)..." value="Urban Agriculture & Water Conservation" />
+                  <button id="btnGenRlExam" class="ios-btn primary compact" type="button">Test Yaratish</button>
+                </div>
+              </div>
+              <div id="rlAudioControlBar" class="audio-bar hidden">
+                <button id="btnPlayRlAudio" class="ios-btn success compact" type="button">🔊 Audioni Tinglash</button>
+                <span class="hint-text">Haqiqiy imtihondek 1 marta tinglang!</span>
+              </div>
+              <div id="rlExamContainer" class="card-block hidden"></div>
+            </div>
+
+            <!-- 0B. 30-Word IELTS Academic & Synonym Trap Speed-Sprint -->
+            <div id="lab-sprint" class="lab-pane hidden">
+              <div class="card-block">
+                <div class="row-between">
+                  <div>
+                    <span class="badge-mini">⚡ KUNLIK 30 SO‘ZLIK IELTS SPRINT</span>
+                    <div style="font-size:13px; margin-top:4px;"><strong id="sprintTotalWords">0</strong> / 3,000+ akademik so‘z maqsadi</div>
+                  </div>
+                  <span class="badge-mini" id="sprintComboBadge">Rekord: 0</span>
+                </div>
+                <div class="search-row" style="margin-top:8px;">
+                  <input id="sprintThemeInput" type="text" class="ios-input" placeholder="Mavzu (masalan: Research, Economy, Tech)..." />
+                  <button id="btnGenSprint" class="ios-btn primary compact" type="button">⚡ 30 So‘z Yaratish</button>
+                </div>
+              </div>
+              <div id="sprintGameBox" class="card-block hidden"></div>
+              <div id="sprintTableBox" class="card-block hidden"></div>
+            </div>
+
+            <!-- 1. Personal AI Vocabulary + Visual Mnemonics -->
+            <div id="lab-vocab" class="lab-pane">
+              <div class="card-block">
+                <div class="row-between">
+                  <div>
+                    <strong id="vocabCounterText">0 / 0</strong>
+                    <span class="hint-text" id="vocabMasteredText" style="display:block;">AI suhbatlaringizdan yig'ilgan so'zlar</span>
+                  </div>
+                  <button id="btnGenPersonalVocab" class="ios-btn primary compact" type="button">
+                    🧠 So'z shakllantir
+                  </button>
+                </div>
+                <div class="search-row" style="margin-top:8px;">
+                  <input id="vocabTopicInput" type="text" class="ios-input" placeholder="Ixtiyoriy mavzu (yoki bo'sh qoldiring — AI kamchiligingizdan tanlaydi)..." />
+                </div>
+              </div>
+
+              <div class="flashcard-stage" id="flashcardStage">
+                <div id="flashcardEl" class="flashcard">
+                  <div class="flashcard-face front">
+                    <span class="fc-badge">SHAXSIY LUG'AT</span>
+                    <small class="fc-label">ELEMENTARY / O'ZBEKCHA</small>
+                    <h2 id="fcElementary">Hali so'z yo'q</h2>
+                    <p id="fcUzbek" class="fc-uzbek">"So'z shakllantir" tugmasini bosing yoki AI Ustoz bilan gaplashing</p>
+                    <span class="fc-tap-hint">👆 Band 8.0 shaklini ko'rish uchun bosing</span>
+                  </div>
+                  <div class="flashcard-face back">
+                    <span class="fc-badge green">IELTS BAND 8.0</span>
+                    <h2 id="fcBand8">-</h2>
+                    <p id="fcExample" class="fc-example">-</p>
+                    <small id="fcReason" class="fc-ipa"></small>
+                    <div class="row-between" style="gap:6px; margin-top:4px;">
+                      <button id="btnSpeakCard" class="ios-btn secondary compact" type="button">🔊 Eshitish</button>
+                      <button id="btnVisualMnemonic" class="ios-btn gradient compact" type="button">🎨 Vizual Rasm</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="fc-actions">
+                <button id="btnCardRepeat" class="ios-btn secondary" type="button">🔄 Qaytarish</button>
+                <button id="btnCardKnown" class="ios-btn success" type="button">✅ O'rgandim</button>
+                <button id="btnCardNext" class="ios-btn primary" type="button">➡️ Keyingi</button>
+              </div>
+
+              <div id="mnemonicBox" class="card-block hidden"></div>
+              <div id="vocabList" class="vocab-list"></div>
+            </div>
+
+            <!-- 2. Shadowing & Pronunciation Studio -->
+            <div id="lab-shadowing" class="lab-pane hidden">
+              <div class="card-block">
+                <span class="badge-mini">🔁 JONLI SHADOWING TRENAJYOR</span>
+                <p class="hint-text" style="margin:6px 0 8px;">
+                  Spikerni eshiting, ketidan mikrofon orqali qaytaring — AI haqiqiy ovozingizni eshitib talaffuz va ohang ballini (0–100%) beradi!
+                </p>
+                <div class="search-row">
+                  <input id="shadowFocusInput" type="text" class="ios-input" placeholder="Mavzu yoki qiyin tovush (bo'sh qoldirsangiz AI tanlaydi)..." />
+                  <button id="btnGenShadowing" class="ios-btn primary compact" type="button">Yaratish</button>
+                </div>
+              </div>
+              <div id="shadowingList" class="days-list"></div>
+              <div id="shadowingResultBox" class="card-block hidden"></div>
+            </div>
+
+            <!-- 3. Camera Visual Ustoz -->
+            <div id="lab-vision" class="lab-pane hidden">
+              <div class="card-block">
+                <span class="badge-mini">📸 IPHONE KAMERA VISUAL USTOZ</span>
+                <div class="pill-row" style="margin-top:8px;">
+                  <button class="filter-pill active" id="btnVisHandwriting" type="button">✍️ Qo'lyozma Insho</button>
+                  <button class="filter-pill" id="btnVisScene" type="button">🖼️ Rasmga Qarab Gapirish</button>
+                </div>
+                <input id="visionNoteInput" type="text" class="ios-input" style="margin-top:8px;" placeholder="AI ga qo'shimcha izoh (ixtiyoriy)..." />
+                <input id="visionFileInput" type="file" accept="image/*" class="hidden" />
+                <button id="btnPickVisionImage" class="ios-btn gradient full" style="margin-top:8px;" type="button">
+                  📷 Rasmga olish yoki Galereyadan tanlash
+                </button>
+                <img id="visionPreviewImg" src="" alt="" class="vision-preview hidden" />
+              </div>
+              <div id="visionResultBox" class="card-block hidden"></div>
+            </div>
+
+            <!-- 4. Writing, Sentence Upgrade & Dynamic Task 1 Chart -->
+            <div id="lab-writing" class="lab-pane hidden">
+              <div class="card-block">
+                <div class="row-between">
+                  <label class="field-label" for="writingPromptInput">Mavzu / Vazifa:</label>
+                  <button id="btnGenTask1Chart" class="mini-link-btn green" type="button">📊 AI Task 1 Grafik Chizish</button>
+                </div>
+                <div id="task1ChartBox" class="chart-box hidden"></div>
+                <input
+                  id="writingPromptInput"
+                  type="text"
+                  class="ios-input"
+                  style="margin-top:6px;"
+                  value="Tell me about your daily routine or write an IELTS paragraph on technology."
+                />
+                <div class="row-between" style="margin-top:8px;">
+                  <span id="wordCountBadge" class="badge-mini">0 so'z</span>
+                  <span class="hint-text">AI xatolarni Xotiraga saqlaydi</span>
+                </div>
+                <textarea
+                  id="essayInput"
+                  class="ios-textarea"
+                  rows="7"
+                  placeholder="Ingliz tilida xohlagancha yozing (Elementary bo'lsa ham qo'rqmang — Gemini 4 Hydrogen kamchiliklaringizni topib, Band 8.0 ga aylantiradi)..."
+                ></textarea>
+                <button id="btnEvalWriting" class="ios-btn primary full" type="button">
+                  🚀 Tekshirish & Kamchiliklarni Aniqlash
+                </button>
+              </div>
+
+              <div id="writingResultBox" class="card-block hidden"></div>
+            </div>
+          </section>
+        </main>
+
+        <!-- iOS Bottom Tab Bar (4 Living AI Tabs with Crisp SF-Style SVGs) -->
+        <nav class="ios-tab-bar four-tabs" aria-label="Asosiy menyu">
+          <button class="tab-btn active" data-tab="tutor" type="button">
+            <span class="tab-ico">
+              <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M9 10h.01M15 10h.01"/></svg>
+            </span>
+            <span class="tab-lbl">Jonli Ustoz</span>
+          </button>
+          <button class="tab-btn" data-tab="media" type="button">
+            <span class="tab-ico">
+              <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+            </span>
+            <span class="tab-lbl">Media &amp; Audio</span>
+          </button>
+          <button class="tab-btn" data-tab="brain" type="button">
+            <span class="tab-ico">
+              <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 0-4 4v1a3 3 0 0 0-3 3v1a3 3 0 0 0 3 3h1v4a3 3 0 0 0 6 0v-4h1a3 3 0 0 0 3-3v-1a3 3 0 0 0-3-3V6a4 4 0 0 0-4-4z"/></svg>
+            </span>
+            <span class="tab-lbl">AI Xotirasi</span>
+          </button>
+          <button class="tab-btn" data-tab="lab" type="button">
+            <span class="tab-ico">
+              <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/></svg>
+            </span>
+            <span class="tab-lbl">Mashqxona</span>
+          </button>
+        </nav>
+
+        <div class="ios-home-indicator" aria-hidden="true"></div>
+
+        <!-- MODAL: WEEKLY STRICT NO-HINTS CHECKPOINT EXAM -->
+        <div id="weeklyExamModal" class="sheet-overlay hidden">
+          <div class="sheet-card">
+            <div class="sheet-handle"></div>
+            <div class="sheet-header">
+              <div>
+                <span class="badge-mini">🏆 HAFTALIK QATTIQQO'L IMTIHON</span>
+                <h2 id="weeklyExamTitle">Yordamsiz 4-Skill Nazorat</h2>
+              </div>
+              <button class="close-btn" id="btnCloseWeeklyExam" type="button">✕</button>
+            </div>
+            <div class="sheet-body" id="weeklyExamBody"></div>
+          </div>
+        </div>
+
+        <!-- MODAL: PROACTIVE DAILY AI BRIEFING & 90-DAY TRAJECTORY -->
+        <div id="dailyBriefingModal" class="sheet-overlay hidden">
+          <div class="sheet-card">
+            <div class="sheet-handle"></div>
+            <div class="sheet-header">
+              <div>
+                <span class="badge-mini" id="briefingModalBadge">🔔 KUNLIK AI HISOBOT & REJA</span>
+                <h2 id="briefingModalTitle">Bugungi Holatingiz</h2>
+              </div>
+              <button class="close-btn" id="btnCloseBriefingModal" type="button">✕</button>
+            </div>
+            <div class="sheet-body" id="dailyBriefingBody"></div>
+          </div>
+        </div>
+
+        <!-- MODAL: MIXED UZBEK/ENGLISH WORD BRICKS ASSEMBLER -->
+        <div id="brickHelperModal" class="sheet-overlay hidden">
+          <div class="sheet-card">
+            <div class="sheet-handle"></div>
+            <div class="sheet-header">
+              <div>
+                <span class="badge-mini" id="brickModalLevelBadge">🧩 GAP KUBIKLARI</span>
+                <h2>O‘zbekcha / Aralash → Inglizcha</h2>
+              </div>
+              <button class="close-btn" id="btnCloseBrickModal" type="button">✕</button>
+            </div>
+            <div class="sheet-body">
+              <div class="card-block">
+                <label class="field-label" for="brickRawInput">Fikringizni o‘zbekcha yoki yarim-inglizcha yozing:</label>
+                <textarea id="brickRawInput" class="ios-textarea" style="min-height:68px;" placeholder="Masalan: Yesterday men ishga bordim va juda charchadim..."></textarea>
+                <button id="btnBuildBricks" class="ios-btn primary full" type="button">🧩 Kubiklarga Bo‘lish</button>
+              </div>
+              <div id="brickWorkspace" class="card-block hidden"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MODAL: LEVEL-ADAPTIVE GOLDEN VERBS & PATTERNS -->
+        <div id="goldenPatternsModal" class="sheet-overlay hidden">
+          <div class="sheet-card">
+            <div class="sheet-handle"></div>
+            <div class="sheet-header">
+              <div>
+                <span class="badge-mini" id="goldenBadge">🧱 OLTIN FE'LLAR VA QOLIPLAR</span>
+                <h2 id="goldenTitle">Darajangizga Mos Qoliplar</h2>
+              </div>
+              <button class="close-btn" id="btnCloseGoldenModal" type="button">✕</button>
+            </div>
+            <div class="sheet-body" id="goldenBody"></div>
+          </div>
+        </div>
+
+        <!-- MODAL: GLOBAL TAP-TO-TRANSLATE WORD LOOKUP -->
+        <div id="wordLookupModal" class="sheet-overlay hidden">
+          <div class="sheet-card">
+            <div class="sheet-handle"></div>
+            <div class="sheet-header">
+              <div>
+                <span class="badge-mini">👆 SO‘Z TARJIMASI & DARAJALAR</span>
+                <h2 id="lookupWordTitle">Word</h2>
+              </div>
+              <button class="close-btn" id="btnCloseLookupModal" type="button">✕</button>
+            </div>
+            <div class="sheet-body" id="wordLookupBody"></div>
+          </div>
+        </div>
+
+        <!-- MODAL: 7-DAY SNOWBALL GRAMMAR CHAIN EXPERIENCE -->
+        <div id="bootcampModal" class="sheet-overlay hidden">
+          <div class="sheet-card">
+            <div class="sheet-handle"></div>
+            <div class="sheet-header">
+              <div>
+                <span class="badge-mini" id="bootcampModalBadge">⚡ 7-KUNLIK GRAMMATIKA ZANJIRI</span>
+                <h2 id="bootcampModalTitle">Yuklanmoqda...</h2>
+              </div>
+              <button class="close-btn" id="btnCloseBootcampModal" type="button">✕</button>
+            </div>
+            <div class="sheet-body" id="bootcampModalBody"></div>
+          </div>
+        </div>
+
+        <!-- MODAL: DYNAMIC AI PERSONALIZED STEP -->
+        <div id="stepModal" class="sheet-overlay hidden">
+          <div class="sheet-card">
+            <div class="sheet-handle"></div>
+            <div class="sheet-header">
+              <div>
+                <span class="badge-mini" id="stepModalBadge">AI SHAXSIY DARSI</span>
+                <h2 id="stepModalTitle">Yuklanmoqda...</h2>
+              </div>
+              <button class="close-btn" id="btnCloseStepModal" type="button">✕</button>
+            </div>
+            <div class="sheet-body" id="stepModalBody"></div>
+          </div>
+        </div>
+
+        <!-- MODAL: SETTINGS -->
+        <div id="settingsModal" class="sheet-overlay hidden">
+          <div class="sheet-card">
+            <div class="sheet-handle"></div>
+            <div class="sheet-header">
+              <div>
+                <span class="badge-mini">AI & OVOZ SOZLAMALARI</span>
+                <h2>Sozlamalar</h2>
+              </div>
+              <button class="close-btn" id="btnCloseSettings" type="button">✕</button>
+            </div>
+            <div class="sheet-body">
+              <div class="card-block">
+                <label class="field-label" for="settingApiKey">Google AI Studio API Key:</label>
+                <input id="settingApiKey" type="text" class="ios-input" placeholder="Standart kalit faol..." />
+              </div>
+              <div class="card-block">
+                <label class="field-label" for="settingVoice">Gemini TTS Ovozi:</label>
+                <select id="settingVoice" class="ios-select">
+                  <option value="Kore">Kore (Aniq va Tabiiy)</option>
+                  <option value="Aoede">Aoede (Akademik ohang)</option>
+                  <option value="Puck">Puck (Energiyali)</option>
+                </select>
+              </div>
+              <div class="card-block row-between">
+                <div>
+                  <strong>Avtomatik Ovozli O'qish</strong>
+                  <p class="hint-text">AI javobini ovozda o'qiydi</p>
+                </div>
+                <input id="settingAutoVoice" type="checkbox" checked class="ios-switch" />
+              </div>
+              <button id="btnSaveSettings" class="ios-btn primary full" type="button">💾 Saqlash</button>
+              <button id="btnResetBrain" class="ios-btn danger-outline full" style="margin-top:8px;" type="button">
+                🧠 AI Xotirasini Noldan Boshlash
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- MODAL: IPHONE 13 PRO QR CONNECT -->
+        <div id="qrModal" class="sheet-overlay hidden">
+          <div class="sheet-card">
+            <div class="sheet-handle"></div>
+            <div class="sheet-header">
+              <div>
+                <span class="badge-mini">IPHONE 13 PRO DA OCHISH</span>
+                <h2>Wi-Fi & Home Screen</h2>
+              </div>
+              <button class="close-btn" id="btnCloseQr" type="button">✕</button>
+            </div>
+            <div class="sheet-body qr-body">
+              <p class="hint-text">iPhone 13 Pro kamerasini QR kodga tuting (bitta Wi-Fi tarmoqda bo'lishi kerak):</p>
+              <div id="qrCanvasWrap" class="qr-box"></div>
+              <div class="lan-url-box">
+                <code id="lanUrlText">http://192.168.0.103:3000</code>
+                <button id="btnCopyLanUrl" class="mini-link-btn" type="button">Nusxalash</button>
+              </div>
+              <div class="card-block" style="text-align:left; width:100%;">
+                <strong>📦 iPhone 13 Pro-ga Ilovani O'rnatish (Kompyutersiz ishlaydi!):</strong>
+                <div style="display:flex; flex-direction:column; gap:8px; margin-top:8px;">
+                  <a href="/downloads/IELTS8-AI-iPhone13Pro.ipa" download="IELTS8-AI-iPhone13Pro.ipa" class="ios-btn primary full" style="display:block; text-decoration:none; text-align:center;">
+                    📦 IELTS8-AI-iPhone13Pro.ipa Yuklab Olish
+                  </a>
+                  <a href="/downloads/IELTS8-AI-iPhone13Pro.mobileconfig" class="ios-btn success full" style="display:block; text-decoration:none; text-align:center;">
+                    🍏 iPhone-ga To'g'ridan-To'g'ri O'rnatish (.mobileconfig)
+                  </a>
+                  <a href="/downloads/IELTS8-AI-Offline-4G.mobileconfig" class="ios-btn secondary compact full" style="display:block; text-decoration:none; text-align:center;">
+                    📡 Kompyutersiz 4G/Offline Profil (.mobileconfig)
+                  </a>
+                  <a href="/downloads/IELTS8-AI-Standalone-iPhone13Pro.html" download="IELTS8-AI-Standalone-iPhone13Pro.html" class="ios-btn secondary compact full" style="display:block; text-decoration:none; text-align:center;">
+                    ⚡ Server-siz Mustaqil Ilova Fayli (.html)
+                  </a>
+                </div>
+                <ol class="ios-steps" style="margin-top:10px;">
+                  <li><strong>Muhim (Eskisini o'chirib qayta o'rnating):</strong> Agar oldin <em>Unknown Payload</em> profili tushib qolgan bo'lsa, iPhone <em>Settings &gt; General &gt; VPN &amp; Device Management</em> ichidan eskisini <em>Remove Profile</em> qiling. So'ng yashil tugmani bosing &rarr; <em>Allow</em> &rarr; <em>Settings &gt; Profile Downloaded &gt; Install</em> — darhol Asosiy ekranga <strong>IELTS 8 AI</strong> va <strong>IELTS 8 (4G/Offline)</strong> ikonalari tushadi!</li>
+                  <li><strong>Mustaqil Fayl (.html):</strong> iPhone Files yoki Telegram Saved Messages'da ochsangiz — 100% serversiz ishlaydi.</li>
+                  <li><strong>Safari PWA (Eng ishonchli):</strong> Safari pastidagi <em>Share &uarr; &rarr; Add to Home Screen</em>.</li>
+                  <li><strong>Native Xcode .ipa:</strong> Sideloadly/AltStore uchun to'liq ARM64 buildni papkadagi <code>BUILD_IPA_CLOUD.bat</code> (GitHub Actions macOS) orqali 1 klikda yig'ing.</li>
+                </ol>
+                <button id="btnEnableWakeReminder" class="ios-btn secondary compact full" style="margin-top:8px;" type="button">
+                  🔔 Uyg'otuvchi Eslatmalarni Yoqish
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="toastEl" class="toast hidden"></div>
+
+  <script src="/app.js?v=5"></script>
+</body>
+</html>

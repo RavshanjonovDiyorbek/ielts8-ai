@@ -1,0 +1,17 @@
+{
+  "appId": "uz.ielts8.aiteacher",
+  "appName": "IELTS 8 AI",
+  "webDir": "public",
+  "bundledWebRuntime": false,
+  "ios": {
+    "contentInset": "automatic",
+    "allowsLinkPreview": false,
+    "scrollEnabled": true
+  },
+  "plugins": {
+    "LocalNotifications": {
+      "smallIcon": "ic_stat_icon_config_sample",
+      "iconColor": "#0A84FF"
+    }
+  }
+}

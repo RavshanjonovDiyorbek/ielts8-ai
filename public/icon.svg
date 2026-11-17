@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0A84FF"/>
+      <stop offset="55%" stop-color="#5E5CE6"/>
+      <stop offset="100%" stop-color="#30D158"/>
+    </linearGradient>
+    <linearGradient id="shine" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="116" fill="url(#bg)"/>
+  <rect x="20" y="20" width="472" height="236" rx="96" fill="url(#shine)"/>
+  <text x="256" y="232" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif" font-weight="800" font-size="148" fill="#FFFFFF" letter-spacing="-4">8.0</text>
+  <text x="256" y="330" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif" font-weight="700" font-size="54" fill="#EAF4FF" letter-spacing="3">IELTS AI</text>
+  <rect x="136" y="372" width="240" height="44" rx="22" fill="rgba(9,13,22,0.34)"/>
+  <text x="256" y="402" text-anchor="middle" font-family="-apple-system, sans-serif" font-weight="600" font-size="24" fill="#FFFFFF">90-Day Ustoz</text>
+</svg>
